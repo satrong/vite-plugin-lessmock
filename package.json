@@ -1,0 +1,32 @@
+{
+  "name": "tsmock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/lodash": "^4.14.181",
+    "@types/node": "16",
+    "@typescript-eslint/eslint-plugin": "^5.18.0",
+    "@typescript-eslint/parser": "^5.18.0",
+    "eslint": "^7.12.1",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.0.0",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.1",
+    "vitest": "^0.9.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^6.1.2",
+    "lodash": "^4.17.21",
+    "ts-json-schema-generator": "^1.0.0"
+  }
+}
