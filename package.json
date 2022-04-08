@@ -1,15 +1,21 @@
 {
-  "name": "tsmock",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "vite-plugin-lessmock",
+  "version": "1.0.2",
+  "description": "A vite plugin that auto generate mock data with fake data for TypeScript interfaces.",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
+    "build": "rm -rf ./dist && tsc",
     "test": "vitest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["vite mock", "vite-plugin", "ts mock"],
+  "author": "satrong <satrong@foxmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@faker-js/faker": "^6.1.2",
+    "lodash": "^4.17.21",
+    "ts-json-schema-generator": "^1.0.0"
+  },
   "devDependencies": {
     "@types/lodash": "^4.14.181",
     "@types/node": "16",
@@ -24,9 +30,7 @@
     "vite": "^2.9.1",
     "vitest": "^0.9.0"
   },
-  "dependencies": {
-    "@faker-js/faker": "^6.1.2",
-    "lodash": "^4.17.21",
-    "ts-json-schema-generator": "^1.0.0"
-  }
+  "files": [
+    "dist"
+  ]
 }

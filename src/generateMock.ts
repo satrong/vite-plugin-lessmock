@@ -1,21 +1,21 @@
 import { createGenerator } from 'ts-json-schema-generator'
 import type { Schema, Config } from 'ts-json-schema-generator'
-import { resolve } from 'path'
 import { faker } from '@faker-js/faker'
 import _ from 'lodash'
 
 export class GenerateMock {
-  private SPECIAL_TYPE = 'TsMockType'
+  private USE_TYPE = 'TLessMock'
   private filepath: string
-  private schema: Schema
+  private schema: Schema | null
 
   constructor (tsFilepath: string) {
     this.filepath = tsFilepath
     this.schema = this.getJsonSchema()
   }
 
-  generateMock<T = any> (): T | null {
-    const data = this.schema.definitions![this.SPECIAL_TYPE]
+  generate<T = any> (): T | null {
+    if (this.schema === null) return null
+    const data = this.schema.definitions![this.USE_TYPE]
     if (typeof data === 'object') {
       return this.parse(data)
     }
@@ -23,21 +23,30 @@ export class GenerateMock {
   }
 
   getJsonSchema () {
+    if (this.schema === null) return null
     if (this.schema) return this.schema
 
     const config: Config = {
       path: this.filepath,
-      tsconfig: resolve('tsconfig.json'),
-      type: this.SPECIAL_TYPE
+      type: this.USE_TYPE,
+      skipTypeCheck: true
     }
 
-    return createGenerator(config).createSchema(config.type)
+    try {
+      const d = createGenerator(config).createSchema(config.type)
+      return d
+    } catch (err) {
+      return null
+    }
   }
 
   private parseObjectType (schema: Schema) {
     const data: Record<string, any> = {}
+    const required = schema.required || []
     Object.entries(schema.properties || {}).forEach(([field, value]) => {
-      data[field] = this.parse(value)
+      if (required.includes(field) || faker.datatype.boolean()) {
+        data[field] = this.parse(value)
+      }
     })
     return data
   }
@@ -92,7 +101,7 @@ export class GenerateMock {
     if (_.isObject(schema) && schema.type === undefined && schema.$ref) {
       const key = schema.$ref.replace('#/definitions/', '')
       const rest = _.omit(schema, '$ref')
-      const newSchema = this.schema.definitions![decodeURIComponent(key)]
+      const newSchema = this.schema!.definitions![decodeURIComponent(key)]
       return Object.assign(rest, newSchema)
     }
     return schema

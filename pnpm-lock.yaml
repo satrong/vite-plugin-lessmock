@@ -1,40 +1,57 @@
 lockfileVersion: 5.3
 
-specifiers:
-  '@faker-js/faker': ^6.1.2
-  '@types/lodash': ^4.14.181
-  '@types/node': '16'
-  '@typescript-eslint/eslint-plugin': ^5.18.0
-  '@typescript-eslint/parser': ^5.18.0
-  eslint: ^7.12.1
-  eslint-config-standard: ^16.0.3
-  eslint-plugin-import: ^2.22.1
-  eslint-plugin-node: ^11.1.0
-  eslint-plugin-promise: ^5.0.0
-  lodash: ^4.17.21
-  ts-json-schema-generator: ^1.0.0
-  typescript: ^4.6.3
-  vite: ^2.9.1
-  vitest: ^0.9.0
+importers:
 
-dependencies:
-  '@faker-js/faker': 6.1.2
-  lodash: 4.17.21
-  ts-json-schema-generator: 1.0.0
+  .:
+    specifiers:
+      '@faker-js/faker': ^6.1.2
+      '@types/lodash': ^4.14.181
+      '@types/node': '16'
+      '@typescript-eslint/eslint-plugin': ^5.18.0
+      '@typescript-eslint/parser': ^5.18.0
+      eslint: ^7.12.1
+      eslint-config-standard: ^16.0.3
+      eslint-plugin-import: ^2.22.1
+      eslint-plugin-node: ^11.1.0
+      eslint-plugin-promise: ^5.0.0
+      lodash: ^4.17.21
+      ts-json-schema-generator: ^1.0.0
+      typescript: ^4.6.3
+      vite: ^2.9.1
+      vitest: ^0.9.0
+    dependencies:
+      '@faker-js/faker': 6.1.2
+      lodash: 4.17.21
+      ts-json-schema-generator: 1.0.0
+    devDependencies:
+      '@types/lodash': 4.14.181
+      '@types/node': 16.11.26
+      '@typescript-eslint/eslint-plugin': 5.18.0_93fd1b55dafbdf76506419beaedce909
+      '@typescript-eslint/parser': 5.18.0_eslint@7.32.0+typescript@4.6.3
+      eslint: 7.32.0
+      eslint-config-standard: 16.0.3_b34912069e885f2a9370bfe10b54509c
+      eslint-plugin-import: 2.26.0_eslint@7.32.0
+      eslint-plugin-node: 11.1.0_eslint@7.32.0
+      eslint-plugin-promise: 5.2.0_eslint@7.32.0
+      typescript: 4.6.3
+      vite: 2.9.1
+      vitest: 0.9.0
 
-devDependencies:
-  '@types/lodash': 4.14.181
-  '@types/node': 16.11.26
-  '@typescript-eslint/eslint-plugin': 5.18.0_93fd1b55dafbdf76506419beaedce909
-  '@typescript-eslint/parser': 5.18.0_eslint@7.32.0+typescript@4.6.3
-  eslint: 7.32.0
-  eslint-config-standard: 16.0.3_b34912069e885f2a9370bfe10b54509c
-  eslint-plugin-import: 2.26.0_eslint@7.32.0
-  eslint-plugin-node: 11.1.0_eslint@7.32.0
-  eslint-plugin-promise: 5.2.0_eslint@7.32.0
-  typescript: 4.6.3
-  vite: 2.9.1
-  vitest: 0.9.0
+  packages/core:
+    specifiers:
+      '@faker-js/faker': ^6.1.2
+      '@types/lodash': ^4.14.181
+      lodash: ^4.17.21
+      ts-json-schema-generator: ^1.0.0
+    dependencies:
+      '@faker-js/faker': 6.1.2
+      lodash: 4.17.21
+      ts-json-schema-generator: 1.0.0
+    devDependencies:
+      '@types/lodash': 4.14.181
+
+  packages/vite:
+    specifiers: {}
 
 packages:
 

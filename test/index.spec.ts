@@ -1,10 +1,10 @@
 import { describe, test, expect } from 'vitest'
 import path from 'path'
-import { GenerateMock } from '../src/index'
+import { GenerateMock } from '../src/generateMock'
 
 describe('base', () => {
   const generateMock = new GenerateMock(path.join(__dirname, './fixtures/base.ts'))
-  const result = generateMock.generateMock()
+  const result = generateMock.generate()
 
   test('check property', () => {
     expect(result).toHaveProperty('method')
@@ -34,7 +34,7 @@ describe('base', () => {
       expect(typeof item.count).toBe('number')
       expect(typeof item.title).toBe('string')
       expect(item.title.length).toBeLessThanOrEqual(10)
-      expect(typeof item.sex).toBe('string')
+      expect(['string', 'undefined']).contain(typeof item.sex)
 
       result.data.data.forEach((el: any) => {
         if (typeof el.tags !== 'number') {
