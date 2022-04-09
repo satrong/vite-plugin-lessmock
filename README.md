@@ -1,12 +1,15 @@
 # vite-plugin-lessmock
+
 A vite plugin that auto generate mock data with fake data for TypeScript interfaces.
 
 ## Install
+
 ```bash
 npm install vite-plugin-lessmock
 ```
 
 ## Usage
+
 _vite.config.ts_:
 ```ts
 import { defineConfig } from 'vite'
@@ -24,6 +27,7 @@ export default defineConfig({
 ```
 
 ## Options
+
 ```ts
 lessMock(options)
 
@@ -43,16 +47,27 @@ type TOptions = {
 }
 ```
 
-## Demo
+## Request match file
+
 Project structure:
 ```text
 - my_project
   - mock
     - #a#b.get.ts
-    - #a#c.post.ts 
+    - #a#c.post.ts
+    - a
+      - #d#e.get.ts
 ```
 
-_#a#b.get.ts_:
+- URL `/a/b` with `GET` method will match _my_project/mock/#a#b.get.ts_ file.
+- URL `/a/c` with `POST` method will match _my_project/mock/#a#c.post.ts_ file.
+- URL `/a/d/e` with `GET` method will match _my_project/mock/a/#d#e.get.ts_ file.
+
+> Warn: make sure `.get.ts` `.post.ts` is lower case, and file and directory name is case sensitive.
+
+## Example
+
+_#a#b.get.ts_ file's code:
 ```ts
 type ReturnType<T> = {
   success: 200 | 201 | 204;
@@ -73,4 +88,19 @@ export type TLessMock = ReturnType<{
   age: number;
   status: boolean;
 }>
+```
+
+The response content that you request `/a/b` will be like blew:
+
+```json
+{
+  "success": 204,
+  "data": {
+    "id": 42365,
+    "name": "Cecil",
+    "age": 23,
+    "status": false
+  },
+  "msg": "Illo deleniti fuga inventore asperiores tempora."
+}
 ```
