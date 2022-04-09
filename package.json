@@ -11,9 +11,14 @@
   "keywords": [
     "vite mock",
     "vite-plugin",
-    "ts mock"
+    "lessmock"
   ],
   "author": "satrong <satrong@foxmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/satrong/vite-plugin-lessmock.git"
+  },
+  "homepage": "https://github.com/satrong/vite-plugin-lessmock/tree/main/#readme",
   "license": "MIT",
   "dependencies": {
     "@faker-js/faker": "^6.1.2",
