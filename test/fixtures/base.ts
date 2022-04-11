@@ -2,7 +2,7 @@ import type { ReturnType } from './defineReturn'
 
 type User = {
   /**
-   * @format name.firstName
+   * @format faker.name.firstName()
    */
   name: string;
   /**
@@ -28,7 +28,7 @@ export type TList = {
   tags: UserType | number;
 }[]
 
-export type TsMockType = {
+export type TLessMock = {
   method: 'get';
   path: '/a/b';
   data: ReturnType<TList>;

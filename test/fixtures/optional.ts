@@ -1,4 +1,4 @@
-export type TsMockType = {
+export type TLessMock = {
   name: string;
   age: number;
   status: boolean;

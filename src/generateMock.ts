@@ -76,7 +76,8 @@ export class GenerateMock {
     }
 
     if (schema.format) {
-      return _.get(faker, schema.format)()
+      // eslint-disable-next-line no-new-func
+      return new Function('faker', `return ${schema.format}`)(faker)
     }
 
     if (type === 'string') {
