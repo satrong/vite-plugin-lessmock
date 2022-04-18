@@ -78,7 +78,7 @@ type ReturnType<T> = {
 export type TLessMock = ReturnType<{
   id: number;
   /**
-   * @format name.firstName
+   * @format faker.name.firstName()
    */
   name: string;
   /**
